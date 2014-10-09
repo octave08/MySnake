@@ -48,13 +48,13 @@
             android:background="@+drawable/btnstart_stage" >
 
             <ImageButton
-                android:id="@+id/btnStage"
+                android:id="@+id/btnStage1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/btnstage2" />
+                android:src="@drawable/btnstage1" />
 
         </RelativeLayout>
         
@@ -81,12 +81,12 @@
             android:background="@drawable/btnstart_infinity" >"
 
             <ImageButton
-                android:id="@+id/btnInfinityStart"
-                android:layout_width="130dp"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/btngo_stage" />
+                android:id="@+id/btnInfinity"
+                android:layout_width="230dp"
+                android:layout_height="150dp"
+               	android:layout_marginLeft="60dp"
+               	android:layout_marginTop="20dp"
+               	android:src="@drawable/btninfinity"  />
 
         </RelativeLayout>
         
