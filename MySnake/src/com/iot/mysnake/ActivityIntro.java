@@ -25,9 +25,9 @@ public class ActivityIntro extends Activity {
 	
 	private ImageButton btnRank;
 	
-	View linearStage	= null;
-	View linearInfinity	= null;
-	View linearMode		= null;
+	private View m_linearStage	= null;
+	private View m_linearInfinity	= null;
+	private View m_linearMode		= null;
 	
 	private int m_gameMode = 1;
 	private final static int STAGE = 1;
@@ -40,7 +40,7 @@ public class ActivityIntro extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.layout_intro);
 		
-		initLinearId();
+		initLinear();
 		
 		setBtnStart();
 		setBtnMode();
@@ -48,10 +48,10 @@ public class ActivityIntro extends Activity {
 
 	}
 	
-	private void initLinearId() {
-		linearStage 	= (View)findViewById(R.id.lineartStage);
-		linearInfinity 	= (View)findViewById(R.id.linearInfinity);
-		linearMode		= (View)findViewById(R.id.linearMode);
+	private void initLinear() {
+		m_linearStage 	= (View)findViewById(R.id.lineartStage);
+		m_linearInfinity 	= (View)findViewById(R.id.linearInfinity);
+		m_linearMode		= (View)findViewById(R.id.linearMode);
 	}
 	
 	// 스타트관련 버튼 설정
@@ -64,9 +64,9 @@ public class ActivityIntro extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				if(m_gameMode == STAGE)
-					linearStage.setVisibility(View.VISIBLE);
+					m_linearStage.setVisibility(View.VISIBLE);
 				else
-					linearInfinity.setVisibility(View.VISIBLE);
+					m_linearInfinity.setVisibility(View.VISIBLE);
 			}
 			
 		});
@@ -78,7 +78,7 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-					linearStage.setVisibility(View.INVISIBLE);
+					m_linearStage.setVisibility(View.INVISIBLE);
 			}
 			
 		});
@@ -104,7 +104,7 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-					linearInfinity.setVisibility(View.INVISIBLE);
+					m_linearInfinity.setVisibility(View.INVISIBLE);
 			}
 			
 		});
@@ -134,7 +134,7 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-					linearMode.setVisibility(View.VISIBLE);
+					m_linearMode.setVisibility(View.VISIBLE);
 			}
 			
 		});
@@ -146,7 +146,7 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-					linearMode.setVisibility(View.INVISIBLE);
+					m_linearMode.setVisibility(View.INVISIBLE);
 			}
 			
 		});
@@ -159,7 +159,7 @@ public class ActivityIntro extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 					m_gameMode = STAGE;
-					linearMode.setVisibility(View.INVISIBLE);
+					m_linearMode.setVisibility(View.INVISIBLE);
 			}
 			
 		});
@@ -172,7 +172,7 @@ public class ActivityIntro extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 					m_gameMode = INFINITY;
-					linearMode.setVisibility(View.INVISIBLE);
+					m_linearMode.setVisibility(View.INVISIBLE);
 			}
 			
 		});

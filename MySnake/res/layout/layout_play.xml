@@ -33,7 +33,8 @@
 
     </LinearLayout>
 
-    <com.iot.mysnake.ViewSnake
+    <com.iot.mysnake.ViewBox
+        android:id="@+id/viewBox"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -11,6 +11,7 @@ public class ActivityPlay extends Activity {
 	private final static int STAGE 		= 1;
 	private final static int INFINITY 	= 2;
 	
+	ViewBox m_viewBox = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,8 @@ public class ActivityPlay extends Activity {
 		
 		Intent intent = getIntent();
 		m_gameMode = intent.getIntExtra("gamemode", STAGE);
+		
+		m_viewBox = (ViewBox)findViewById(R.id.viewBox);
 		
 	}
 	
