@@ -48,21 +48,14 @@
             android:background="@+drawable/btnstart_stage" >
 
             <ImageButton
-                android:id="@+id/btnStage1"
-                android:layout_width="87dp"
-                android:layout_height="87dp"
+                android:id="@+id/btnStage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
-                android:src="@drawable/btnstage" />
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/btnstage2" />
 
-            <ImageButton
-                android:id="@+id/btnStageStart"
-                android:layout_width="130dp"
-                android:layout_height="80dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/btngo_stage" />
         </RelativeLayout>
         
     </LinearLayout>
