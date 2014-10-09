@@ -10,35 +10,35 @@
 
         <ImageButton
             android:id="@+id/btnGoStart"
-            android:layout_width="275px"
+            android:layout_width="186dp"
             android:layout_height="wrap_content"
             android:src="@drawable/btnstart_light" />
 
         <ImageButton
             android:id="@+id/btnGoMode"
-            android:layout_width="250px"
+            android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/btnrank_light" />
+            android:src="@drawable/btnmode_light" />
 
         <ImageButton
             android:id="@+id/btnGoRank"
-            android:layout_width="275px"
+            android:layout_width="186dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/btnmode_light" />
+            android:src="@drawable/btnrank_light" />
 
     </LinearLayout>
     
     <!-- Start Stage page -->
 
     <LinearLayout
-        android:id="@+id/layoutStage"
+        android:id="@+id/lineartStage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible" >
 
         <ImageButton
             android:id="@+id/btnBackFromStage"
-            android:layout_width="275px"
+            android:layout_width="186dp"
             android:layout_height="wrap_content"
             android:src="@drawable/btnstart_vivid" />
 
@@ -70,14 +70,15 @@
      <!--  Start Infinity page -->
     
     <LinearLayout
-        android:id="@+id/layoutInfinity"
+        android:id="@+id/linearInfinity"
         android:layout_width="match_parent"
         android:layout_height="match_parent" 
-        android:visibility="invisible" >"
+        android:visibility="invisible" >
+"
 
         <ImageButton
             android:id="@+id/btnBackFromInfinity"
-            android:layout_width="275px"
+            android:layout_width="186dp"
             android:layout_height="wrap_content"
             android:src="@drawable/btnstart_vivid" />
 
@@ -98,6 +99,32 @@
         
     </LinearLayout>
 
-   
+    <!-- Mode page -->
+    
+    <LinearLayout
+        android:id="@+id/linearMode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" >"
+
+        <ImageButton
+            android:id="@+id/btnSetStage"
+            android:layout_width="186dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btnmode_stage" />
+        
+		<ImageButton
+            android:id="@+id/btnBackFromMode"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btnmode_vivid" />
+
+		<ImageButton
+		    android:id="@+id/btnSetInfinity"
+		    android:layout_width="186dp"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/btnmode_infinity" />
+
+    </LinearLayout>
 
 </FrameLayout>
