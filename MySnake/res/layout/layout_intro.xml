@@ -2,4 +2,102 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
+    <!-- Intro Main page -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:id="@+id/btnGoStart"
+            android:layout_width="275px"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btnstart_light" />
+
+        <ImageButton
+            android:id="@+id/btnGoMode"
+            android:layout_width="250px"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btnrank_light" />
+
+        <ImageButton
+            android:id="@+id/btnGoRank"
+            android:layout_width="275px"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btnmode_light" />
+
+    </LinearLayout>
+    
+    <!-- Start Stage page -->
+
+    <LinearLayout
+        android:id="@+id/layoutStage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" >
+
+        <ImageButton
+            android:id="@+id/btnBackFromStage"
+            android:layout_width="275px"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btnstart_vivid" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@+drawable/btnstart_stage" >
+
+            <ImageButton
+                android:id="@+id/btnStage1"
+                android:layout_width="87dp"
+                android:layout_height="87dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/btnstage" />
+
+            <ImageButton
+                android:id="@+id/btnStageStart"
+                android:layout_width="130dp"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/btngo_stage" />
+        </RelativeLayout>
+        
+    </LinearLayout>
+
+     <!--  Start Infinity page -->
+    
+    <LinearLayout
+        android:id="@+id/layoutInfinity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:visibility="invisible" >"
+
+        <ImageButton
+            android:id="@+id/btnBackFromInfinity"
+            android:layout_width="275px"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btnstart_vivid" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/btnstart_infinity" >"
+
+            <ImageButton
+                android:id="@+id/btnInfinityStart"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/btngo_stage" />
+
+        </RelativeLayout>
+        
+    </LinearLayout>
+
+   
+
 </FrameLayout>
