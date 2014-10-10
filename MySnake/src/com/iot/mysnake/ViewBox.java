@@ -1,6 +1,7 @@
 package com.iot.mysnake;
 
 import java.util.Random;
+
 import java.util.Vector;
 
 import android.content.Context;
@@ -56,11 +57,14 @@ public class ViewBox extends View {
 	private final static int LEVEL4		= 4;
 	private final static int LEVEL5		= 5;
 	
-	private int m_direction = 3;
-	private final static int NORTH		= 1;
-	private final static int SOUTH		= 2;
-	private final static int EAST		= 3;
-	private final static int WEST		= 4;
+	private int m_nextDirection = RIGHT;
+	private int m_direction = RIGHT;
+	private final static int UP			= 1;
+	private final static int DOWN		= 2;
+	private final static int RIGHT		= 3;
+	private final static int LEFT		= 4;
+		
+
 	
 	private RefreshHandler m_refreshHandler = new RefreshHandler();
 	private long m_moveDelay = 600;
@@ -216,21 +220,30 @@ public class ViewBox extends View {
 		m_snakeTrail.add(new Character(this, 4, 3, Character.DIRECTION_NOT));
 		m_snakeTrail.add(new Character(this, 3, 3, Character.DIRECTION_NOT));
 		
-		setSnakeOnMap(EAST);
+		setSnakeOnMap(RIGHT);
 	}
 	
 	protected void setSnakeOnMap(int direction) {
 		Character head 		= m_snakeTrail.get(0);
 		Character newHead 	= null;
 		
+		m_direction = m_nextDirection;
 		
-		switch (m_direction) {
-		case EAST:
+		switch (m_nextDirection) {
+		case RIGHT:
+			newHead = new Character(this, head.getM_x()+1, head.getM_y(), Character.DIRECTION_NOT);
 			break;
-			
-			
+		case LEFT:
+			newHead = new Character(this, head.getM_x()-1, head.getM_y(), Character.DIRECTION_NOT);
+			break;
+		case UP:
+			newHead = new Character(this, head.getM_x(), head.getM_y()-1, Character.DIRECTION_NOT);
+			break;
+		case DOWN:
+			newHead = new Character(this, head.getM_x(), head.getM_y()+1, Character.DIRECTION_NOT);
+			break;
 		}
-		newHead = new Character(this, head.getM_x()+1, head.getM_y(), Character.DIRECTION_NOT);
+		
 		
 		m_snakeTrail.add(0, newHead);
 		m_snakeTrail.remove(m_snakeTrail.size() -1);
@@ -291,10 +304,10 @@ public class ViewBox extends View {
 		m_appleVector.add(newCharacter);
 	}
 	
-	private void update(int direction) {
+	private void update() {
 		this.clearTile();
 		setWallOnMap();
-		setSnakeOnMap(direction);
+		setSnakeOnMap(m_nextDirection);
 		setAppleOnMap();
 		
 		m_refreshHandler.sleep(m_moveDelay);
@@ -304,6 +317,7 @@ public class ViewBox extends View {
 	protected void startGame(int gameMode) {
 		selectGame(gameMode);
 		readyGame(m_gameMode);
+		update();
 	}
 	
 	protected void selectGame(int gameMode) {
@@ -323,8 +337,53 @@ public class ViewBox extends View {
 			initStage(m_gameLevel);
 			initApple();
 		}
-		update();
 	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		// TODO Auto-generated method stub	
+		float touchX;
+		float touchY;
+		Character head = m_snakeTrail.get(0);
+		
+		if(event.getAction() == MotionEvent.ACTION_DOWN) {
+		
+			touchX = event.getX();
+			touchY = event.getY();
+		
+			switch(m_direction) {
+			case RIGHT:
+				if(head.getM_y() < touchY) 
+					m_nextDirection = UP;
+				else
+					m_nextDirection = DOWN;
+				break;
+			case LEFT:
+				if(head.getM_y() < touchY) 
+					m_nextDirection = DOWN;
+				else
+					m_nextDirection = UP;
+				break;
+			case UP:
+				if(head.getM_x() < touchX) 
+					m_nextDirection = LEFT;
+				else
+					m_nextDirection = RIGHT;
+				break;
+			case DOWN:
+				if(head.getM_x() < touchX) 
+					m_nextDirection = RIGHT;
+				else
+					m_nextDirection = LEFT;
+				break;
+			}
+		}
+			
+		return true;
+	}
+		
+
+	
 	
 	class RefreshHandler extends Handler {
 
@@ -343,22 +402,7 @@ public class ViewBox extends View {
 		
 	}
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
-		return super.onTouchEvent(event);
-		
-		switch (event.getAction()) {    
-	    case MotionEvent.ACTION_DOWN:
-	    	break;      
-	    case MotionEvent.ACTION_MOVE: 
-	    	break;
-	    case MotionEvent.ACTION_UP:       
-	          Log.i(" MotionEvent " ," ACTION_UP");
-	          break;
-	   }
-		
-	}
+	
 
 	
 	
