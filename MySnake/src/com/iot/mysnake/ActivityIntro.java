@@ -25,7 +25,8 @@ public class ActivityIntro extends Activity {
 	
 	private ImageButton btnRank;
 	
-	private View m_linearStage	= null;
+	private View m_linearIntro		= null;
+	private View m_linearStage		= null;
 	private View m_linearInfinity	= null;
 	private View m_linearMode		= null;
 	
@@ -49,7 +50,8 @@ public class ActivityIntro extends Activity {
 	}
 	
 	private void initLinear() {
-		m_linearStage 	= (View)findViewById(R.id.lineartStage);
+		m_linearIntro		= (View)findViewById(R.id.LinearIntro);
+		m_linearStage 		= (View)findViewById(R.id.lineartStage);
 		m_linearInfinity 	= (View)findViewById(R.id.linearInfinity);
 		m_linearMode		= (View)findViewById(R.id.linearMode);
 	}
@@ -63,10 +65,13 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(m_gameMode == STAGE)
+				if(m_gameMode == STAGE) {
 					m_linearStage.setVisibility(View.VISIBLE);
+					m_linearIntro.setVisibility(View.INVISIBLE);
+				}
 				else
 					m_linearInfinity.setVisibility(View.VISIBLE);
+					m_linearIntro.setVisibility(View.INVISIBLE);
 			}
 			
 		});
@@ -78,7 +83,9 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+					m_linearIntro.setVisibility(View.VISIBLE);
 					m_linearStage.setVisibility(View.INVISIBLE);
+					
 			}
 			
 		});
@@ -104,6 +111,7 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+					m_linearIntro.setVisibility(View.VISIBLE);
 					m_linearInfinity.setVisibility(View.INVISIBLE);
 			}
 			
@@ -135,6 +143,7 @@ public class ActivityIntro extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 					m_linearMode.setVisibility(View.VISIBLE);
+					m_linearIntro.setVisibility(View.INVISIBLE);
 			}
 			
 		});
@@ -146,6 +155,7 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+					m_linearIntro.setVisibility(View.VISIBLE);
 					m_linearMode.setVisibility(View.INVISIBLE);
 			}
 			
@@ -159,6 +169,7 @@ public class ActivityIntro extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 					m_gameMode = STAGE;
+					m_linearIntro.setVisibility(View.VISIBLE);
 					m_linearMode.setVisibility(View.INVISIBLE);
 			}
 			
@@ -172,6 +183,7 @@ public class ActivityIntro extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 					m_gameMode = INFINITY;
+					m_linearIntro.setVisibility(View.VISIBLE);
 					m_linearMode.setVisibility(View.INVISIBLE);
 			}
 			
