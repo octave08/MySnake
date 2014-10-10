@@ -6,7 +6,10 @@ import java.util.Vector;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class ViewBox extends View {
@@ -42,6 +45,26 @@ public class ViewBox extends View {
 	public static final int SIZE_MAP_X		= 26;
 	public static final int SIZE_MAP_Y		= 13; 
 	
+	private int m_gameMode = 1;
+	private final static int INFINITY 	= 0;
+	private final static int STAGE 		= 1;
+	
+	private int m_gameLevel = 0;
+	private final static int LEVEL1		= 1;
+	private final static int LEVEL2		= 2;
+	private final static int LEVEL3		= 3;
+	private final static int LEVEL4		= 4;
+	private final static int LEVEL5		= 5;
+	
+	private int m_direction = 3;
+	private final static int NORTH		= 1;
+	private final static int SOUTH		= 2;
+	private final static int EAST		= 3;
+	private final static int WEST		= 4;
+	
+	private RefreshHandler m_refreshHandler = new RefreshHandler();
+	private long m_moveDelay = 600;
+	
 
 	
 	public ViewBox(Context context, AttributeSet attrs) {
@@ -49,9 +72,7 @@ public class ViewBox extends View {
 		// TODO Auto-generated constructor stub
 		
 		initDrawable();
-		
 		initGame();
-		
 		
 	}
 	
@@ -125,7 +146,7 @@ public class ViewBox extends View {
 		m_tileMap[y][x] = index;
 	}
 	
-	protected void clearTile() 
+	public void clearTile() 
 	{
 		for(int y=0;y<SIZE_MAP_Y;y++) 
 		{
@@ -143,17 +164,16 @@ public class ViewBox extends View {
 		initSnake();
 	}
 	
-	
+	//MAP 설정
 	private void initMap() {
 		m_tileMap = new int[SIZE_MAP_Y][SIZE_MAP_X];
 		clearTile();
 		
-		setWallsOnMap();
-		setApplesOnMap();
+		setWallOnMap();
 	}
 	
 	
-	protected void setWallsOnMap() {
+	protected void setWallOnMap() {
 		for(int x=0;x<SIZE_MAP_X;x++) {
 			setTile(BOX_YELLOW, x, 0);
 			setTile(BOX_YELLOW, x, SIZE_MAP_Y-1);
@@ -164,10 +184,78 @@ public class ViewBox extends View {
 		}
 	}
 	
-	protected void setApplesOnMap() {
+	void initStage(int gameLevel) {
+		switch(gameLevel) {
+		case LEVEL1:
+			setLevel1OnMap();
+			break;
+		case LEVEL2:
+			break;
+		case LEVEL3:
+			break;
+		case LEVEL4:
+			break;
+		case LEVEL5:
+			break;
+		default :
+			break;
+		}
+	}
+	
+	protected void setLevel1OnMap() {
+		
+	}
+	
+	//snake설정
+	void initSnake() {
+		m_snakeTrail.clear();
+		
+		m_snakeTrail.add(new Character(this, 7, 3, Character.DIRECTION_NOT));
+		m_snakeTrail.add(new Character(this, 6, 3, Character.DIRECTION_NOT));
+		m_snakeTrail.add(new Character(this, 5, 3, Character.DIRECTION_NOT));
+		m_snakeTrail.add(new Character(this, 4, 3, Character.DIRECTION_NOT));
+		m_snakeTrail.add(new Character(this, 3, 3, Character.DIRECTION_NOT));
+		
+		setSnakeOnMap(EAST);
+	}
+	
+	protected void setSnakeOnMap(int direction) {
+		Character head 		= m_snakeTrail.get(0);
+		Character newHead 	= null;
+		
+		
+		switch (m_direction) {
+		case EAST:
+			break;
+			
+			
+		}
+		newHead = new Character(this, head.getM_x()+1, head.getM_y(), Character.DIRECTION_NOT);
+		
+		m_snakeTrail.add(0, newHead);
+		m_snakeTrail.remove(m_snakeTrail.size() -1);
+		
+		int i=0;
+		for(Character c : m_snakeTrail) {
+			if(i==0)
+				setTile(BOX_HEAD, c.getM_x(), c.getM_y());
+			else
+				setTile(BOX_GREEN, c.getM_x(), c.getM_y());
+			i++;
+		}	
+	}
+	
+	//Apple설정
+	protected void initApple() {
+		m_appleVector.clear();
+		
 		addRandomApple();
 		addRandomApple();
 		
+		setAppleOnMap();
+	}
+	
+	protected void setAppleOnMap() {
 		for(Character c : m_appleVector) 
 			setTile(BOX_APPLE, c.getM_x(), c.getM_y());
 	}
@@ -176,6 +264,7 @@ public class ViewBox extends View {
 		Character newCharacter = null;
 		boolean foundMap = false;
 		
+		//사과가 충돌하면 반복해라.
 		while(foundMap == false) {
 			
 			Random rnd = new Random();
@@ -202,29 +291,75 @@ public class ViewBox extends View {
 		m_appleVector.add(newCharacter);
 	}
 	
-	
-	void initSnake() {
-		m_snakeTrail.clear();
+	private void update(int direction) {
+		this.clearTile();
+		setWallOnMap();
+		setSnakeOnMap(direction);
+		setAppleOnMap();
 		
-		m_snakeTrail.add(new Character(this, 7, 3, Character.DIRECTION_NOT));
-		m_snakeTrail.add(new Character(this, 6, 3, Character.DIRECTION_NOT));
-		m_snakeTrail.add(new Character(this, 5, 3, Character.DIRECTION_NOT));
-		m_snakeTrail.add(new Character(this, 4, 3, Character.DIRECTION_NOT));
-		m_snakeTrail.add(new Character(this, 3, 3, Character.DIRECTION_NOT));
-		
-		setSnakeOnMap();
+		m_refreshHandler.sleep(m_moveDelay);
 	}
 	
-	protected void setSnakeOnMap() {
-		int i=0;
-		for(Character c : m_snakeTrail) {
-			if(i==0)
-				setTile(BOX_HEAD, c.getM_x(), c.getM_y());
-			else
-				setTile(BOX_GREEN, c.getM_x(), c.getM_y());
-			i++;
-		}	
+	
+	protected void startGame(int gameMode) {
+		selectGame(gameMode);
+		readyGame(m_gameMode);
 	}
 	
- 
+	protected void selectGame(int gameMode) {
+		if(gameMode == INFINITY)
+			m_gameMode = INFINITY;
+		else {
+			m_gameMode 	= STAGE;
+			m_gameLevel	= gameMode;
+		}
+	}
+	
+	protected void readyGame(int gameMode) {
+		if(gameMode == INFINITY) {
+			initApple();
+		}
+		else {
+			initStage(m_gameLevel);
+			initApple();
+		}
+		update();
+	}
+	
+	class RefreshHandler extends Handler {
+
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			ViewBox.this.update();
+			ViewBox.this.invalidate();
+		}
+		
+		public void sleep(long delayMills) {
+			this.removeMessages(0);
+			sendMessageDelayed(obtainMessage(0), delayMills);
+		}
+		
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		// TODO Auto-generated method stub
+		return super.onTouchEvent(event);
+		
+		switch (event.getAction()) {    
+	    case MotionEvent.ACTION_DOWN:
+	    	break;      
+	    case MotionEvent.ACTION_MOVE: 
+	    	break;
+	    case MotionEvent.ACTION_UP:       
+	          Log.i(" MotionEvent " ," ACTION_UP");
+	          break;
+	   }
+		
+	}
+
+	
+	
 }

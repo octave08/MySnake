@@ -31,8 +31,16 @@ public class ActivityIntro extends Activity {
 	private View m_linearMode		= null;
 	
 	private int m_gameMode = 1;
-	private final static int STAGE = 1;
-	private final static int INFINITY = 2;
+	private final static int INFINITY 	= 0;
+	private final static int STAGE 		= 1;
+	
+	private int m_gameLevel = 0;
+	private final static int LEVEL1		= 1;
+	private final static int LEVEL2		= 2;
+	private final static int LEVEL3		= 3;
+	private final static int LEVEL4		= 4;
+	private final static int LEVEL5		= 5;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +105,10 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				m_gameLevel = LEVEL1;
+				
 				Intent intent = new Intent(ActivityIntro.this, ActivityPlay.class);
-				intent.putExtra("gamemode", m_gameMode);
+				intent.putExtra("gamemode", m_gameLevel);
 				startActivityForResult(intent, -1);
 			}
 			

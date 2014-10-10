@@ -6,7 +6,7 @@ public class Character {
 	public final static int DIRECTION_UP		= 1;
 	public final static int DIRECTINO_DOWN		= 2;
 	public final static int DIRECTINO_LEFT		= 3;
-	public final static int DIRECTINO_RIGHT	= 4;
+	public final static int DIRECTINO_RIGHT		= 4;
 	
 	private int m_x 		= 0;
 	private int m_y			= 0;
