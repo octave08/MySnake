@@ -77,7 +77,7 @@ public class ViewBox extends View {
 	private RefreshHandler m_refreshHandler = new RefreshHandler();
 	private long m_moveDelay = 600;
 	
-
+	
 	
 	public ViewBox(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -229,10 +229,10 @@ public class ViewBox extends View {
 		m_snakeTrail.add(new Character(this, 4, 3, Character.DIRECTION_NOT));
 		m_snakeTrail.add(new Character(this, 3, 3, Character.DIRECTION_NOT));
 		
-		setSnakeOnMap(RIGHT);
+		setSnakeOnMap();
 	}
 	
-	protected void setSnakeOnMap(int direction) {
+	protected void setSnakeOnMap() {
 		boolean growSnake	= false;
 		
 		Character head 		= m_snakeTrail.get(0);
@@ -256,15 +256,16 @@ public class ViewBox extends View {
 		}
 		
 		//collision detect
-		/*/detect collision of BOX_YELLOW
+		//detect collision of BOX_YELLOW
 		if(m_tileMap[newHead.getM_y()][newHead.getM_x()] == BOX_YELLOW)
-			m_activity.goGameover();
+			this.m_activity.goGameover();
 		//detect collision of snakeTail
 		for(Character c : m_snakeTrail) {
-			if(c.equals(newHead)) {
-				m_activity.goGameover();
+			if(newHead.getM_x() == c.getM_x() &&
+					newHead.getM_y() == c.getM_y()) {
+				this.m_activity.goGameover();
 			}
-		}*/
+		}
 		//detect collision of BOX_APPLE
 		
 		for(int i=0;i<m_appleVector.size();i++) {
@@ -347,7 +348,7 @@ public class ViewBox extends View {
 	private void update() {
 		this.clearTile();
 		setWallOnMap();
-		setSnakeOnMap(m_nextDirection);
+		setSnakeOnMap();
 		setAppleOnMap();
 		
 		m_refreshHandler.sleep(m_moveDelay);
@@ -378,6 +379,13 @@ public class ViewBox extends View {
 			initApple();
 		}
 	}
+	
+	
+	public void setActivity(ActivityPlay activity) {
+		m_activity = activity;
+	}
+	
+	
 	
 	
 	@Override
@@ -444,8 +452,6 @@ public class ViewBox extends View {
 		
 	}
 
-	
 
-	
 	
 }

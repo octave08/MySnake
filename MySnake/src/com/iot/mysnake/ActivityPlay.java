@@ -19,14 +19,14 @@ public class ActivityPlay extends Activity {
 	private final static int LEVEL4		= 4;
 	private final static int LEVEL5		= 5;
 
+	private Intent m_intent = null;
+	
 	ViewBox m_viewBox = null;
 	
 	TextView m_textViewScore 	= null;
 	TextView m_textViewApple 	= null;
 	
-	//test
-	int test = 3;
-	//test
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +35,11 @@ public class ActivityPlay extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.layout_play);
 		
-		Intent intent = getIntent();
-		m_gameMode = intent.getIntExtra("gamemode", STAGE);
+		m_intent = getIntent();
+		m_gameMode = m_intent.getIntExtra("gamemode", STAGE);
 		
 		m_viewBox = (ViewBox)findViewById(R.id.viewBox);
+		m_viewBox.setActivity(this);
 		m_viewBox.startGame(m_gameMode);
 			
 	}
@@ -46,11 +47,12 @@ public class ActivityPlay extends Activity {
 	
 	public void goGameover() {
 		
-		Intent intent = new Intent(ActivityPlay.this, ActivityGameover.class);
-		intent.putExtra("gameScore", test);
-		intent.putExtra("appleScore", test);
-		intent.putExtra("time", test);
-		startActivity(intent);
+		Intent intent1 = new Intent(ActivityPlay.this, ActivityGameover.class);
+		intent1.putExtra("gameScore", 3);
+		//intent.putExtra("appleScore", test);
+		//intent.putExtra("time", test);
+		startActivity(intent1);
+			
 		finish();
 			
 	}

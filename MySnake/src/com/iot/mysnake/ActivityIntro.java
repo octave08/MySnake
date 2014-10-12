@@ -109,7 +109,7 @@ public class ActivityIntro extends Activity {
 				
 				Intent intent = new Intent(ActivityIntro.this, ActivityPlay.class);
 				intent.putExtra("gamemode", m_gameLevel);
-				startActivityForResult(intent, -1);
+				startActivity(intent);
 			}
 			
 		});
@@ -136,7 +136,7 @@ public class ActivityIntro extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(ActivityIntro.this, ActivityPlay.class);
 				intent.putExtra("gamemode", m_gameMode);
-				startActivityForResult(intent, -1);
+				startActivityForResult(intent, 1);
 			}
 			
 		});
@@ -198,7 +198,28 @@ public class ActivityIntro extends Activity {
 			}
 			
 		});
+		
+		
+		btnRank = (ImageButton)findViewById(R.id.btnGoRank);
+		btnRank.setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(ActivityIntro.this, ActivityGameover.class);
+				//intent.putExtra("gameScore", test);
+				//intent.putExtra("appleScore", test);
+				//intent.putExtra("time", test);
+				startActivity(intent);
+				finish(); 
+				
+			}
+			
+		}); 
 	}
+	
+
 	
 	
 	
