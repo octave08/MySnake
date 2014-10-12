@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
+import android.widget.TextView;
 
 public class ActivityPlay extends Activity {
 	
@@ -20,6 +21,13 @@ public class ActivityPlay extends Activity {
 
 	ViewBox m_viewBox = null;
 	
+	TextView m_textViewScore 	= null;
+	TextView m_textViewApple 	= null;
+	
+	//test
+	int test = 3;
+	//test
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -32,10 +40,21 @@ public class ActivityPlay extends Activity {
 		
 		m_viewBox = (ViewBox)findViewById(R.id.viewBox);
 		m_viewBox.startGame(m_gameMode);
-		
+			
 	}
-
-
 	
+	
+	public void goGameover() {
+		
+		Intent intent = new Intent(ActivityPlay.this, ActivityGameover.class);
+		intent.putExtra("gameScore", test);
+		intent.putExtra("appleScore", test);
+		intent.putExtra("time", test);
+		startActivity(intent);
+		finish();
+			
+	}
+	
+
 
 }

@@ -1,10 +1,10 @@
 package com.iot.mysnake;
 
 import java.util.Random;
-
 import java.util.Vector;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -16,7 +16,7 @@ import android.view.View;
 public class ViewBox extends View {
 	
 	
-	ActivityPlay	m_Activity = null;
+	ActivityPlay	m_activity = null;
 	
 	Vector<Character>	m_snakeTrail		= new Vector<Character>();
 	Vector<Character> 	m_appleVector		= new Vector<Character>();
@@ -58,13 +58,21 @@ public class ViewBox extends View {
 	private final static int LEVEL5		= 5;
 	
 	private int m_nextDirection = RIGHT;
-	private int m_direction = RIGHT;
+	private int m_direction 	= RIGHT;
 	private final static int UP			= 1;
 	private final static int DOWN		= 2;
 	private final static int RIGHT		= 3;
 	private final static int LEFT		= 4;
-		
-
+	
+	
+	int m_gameScore 	= 0;
+	int m_appleScore 	= 0;
+	
+	float touchDownX	=0;
+	float touchDownY	=0;
+	float touchUpX		=0;
+	float touchUpY		=0;
+	
 	
 	private RefreshHandler m_refreshHandler = new RefreshHandler();
 	private long m_moveDelay = 600;
@@ -162,7 +170,7 @@ public class ViewBox extends View {
 	
 	void initGame() {
 		
-		if(m_Activity != null) ;
+		if(m_activity != null) ;
 			
 		initMap();
 		initSnake();
@@ -188,6 +196,7 @@ public class ViewBox extends View {
 		}
 	}
 	
+	//스테이지 설정
 	void initStage(int gameLevel) {
 		switch(gameLevel) {
 		case LEVEL1:
@@ -224,6 +233,8 @@ public class ViewBox extends View {
 	}
 	
 	protected void setSnakeOnMap(int direction) {
+		boolean growSnake	= false;
+		
 		Character head 		= m_snakeTrail.get(0);
 		Character newHead 	= null;
 		
@@ -244,9 +255,37 @@ public class ViewBox extends View {
 			break;
 		}
 		
+		//collision detect
+		/*/detect collision of BOX_YELLOW
+		if(m_tileMap[newHead.getM_y()][newHead.getM_x()] == BOX_YELLOW)
+			m_activity.goGameover();
+		//detect collision of snakeTail
+		for(Character c : m_snakeTrail) {
+			if(c.equals(newHead)) {
+				m_activity.goGameover();
+			}
+		}*/
+		//detect collision of BOX_APPLE
+		
+		for(int i=0;i<m_appleVector.size();i++) {
+			Character c = m_appleVector.get(i);
+			if(newHead.getM_x() == c.getM_x() &&
+					newHead.getM_y() == c.getM_y()) {
+				m_appleVector.remove(c);
+				addRandomApple();
+				
+				m_appleScore+=1;
+				m_gameScore+=100;
+				
+				m_moveDelay*=0.5;
+				
+				growSnake = true;	
+			}
+		}
 		
 		m_snakeTrail.add(0, newHead);
-		m_snakeTrail.remove(m_snakeTrail.size() -1);
+		if(growSnake == false)
+			m_snakeTrail.remove(m_snakeTrail.size() -1);
 		
 		int i=0;
 		for(Character c : m_snakeTrail) {
@@ -257,6 +296,7 @@ public class ViewBox extends View {
 			i++;
 		}	
 	}
+
 	
 	//Apple설정
 	protected void initApple() {
@@ -339,39 +379,42 @@ public class ViewBox extends View {
 		}
 	}
 	
+	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub	
-		float touchX;
-		float touchY;
-		Character head = m_snakeTrail.get(0);
+
 		
-		if(event.getAction() == MotionEvent.ACTION_DOWN) {
-		
-			touchX = event.getX();
-			touchY = event.getY();
+		if(event.getAction() == MotionEvent.ACTION_DOWN) {	
+			touchDownX = event.getRawX();
+			touchDownY = event.getRawY();
+		}
+		else if(event.getAction() == MotionEvent.ACTION_UP) {
+			touchUpX = event.getRawX();
+			touchUpY = event.getRawY();
+			
 		
 			switch(m_direction) {
 			case RIGHT:
-				if(head.getM_y() < touchY) 
-					m_nextDirection = UP;
-				else
+				if(touchDownY < touchUpY) 
 					m_nextDirection = DOWN;
+				else
+					m_nextDirection = UP;
 				break;
 			case LEFT:
-				if(head.getM_y() < touchY) 
+				if(touchDownY < touchUpY) 
 					m_nextDirection = DOWN;
 				else
 					m_nextDirection = UP;
 				break;
 			case UP:
-				if(head.getM_x() < touchX) 
-					m_nextDirection = LEFT;
-				else
+				if(touchDownX < touchUpX) 
 					m_nextDirection = RIGHT;
+				else
+					m_nextDirection = LEFT;
 				break;
 			case DOWN:
-				if(head.getM_x() < touchX) 
+				if(touchDownX < touchUpX) 
 					m_nextDirection = RIGHT;
 				else
 					m_nextDirection = LEFT;
@@ -383,7 +426,6 @@ public class ViewBox extends View {
 	}
 		
 
-	
 	
 	class RefreshHandler extends Handler {
 

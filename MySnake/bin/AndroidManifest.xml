@@ -30,6 +30,12 @@
             android:screenOrientation="landscape" >
         </activity>
         
+        <activity 
+            android:name=".ActivityGameover"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" > 
+        </activity>
+        
     </application>
 
 </manifest>
