@@ -57,6 +57,13 @@ public class ActivityPlay extends Activity {
 			
 	}
 	
+	public void setTextScore(int gameScore) {
+		m_textViewScore.setText(Integer.toString(gameScore));
+	}
+	public void setTextApple(int appleScore) {
+		m_textViewApple.setText(Integer.toString(appleScore));
+	}
+	
 
 
 }

@@ -351,6 +351,9 @@ public class ViewBox extends View {
 		setSnakeOnMap();
 		setAppleOnMap();
 		
+		m_activity.setTextApple(m_appleScore);
+		m_activity.setTextScore(m_gameScore);
+		
 		m_refreshHandler.sleep(m_moveDelay);
 	}
 	
