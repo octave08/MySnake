@@ -32,14 +32,17 @@ public class ThreadTime extends Thread {
 				Thread.sleep(10);
 				
 			}catch(Exception e) {}
-		}
-		if(isWait) {
-			try {
-				synchronized(this) {
+			
+			if(isWait) {
+				try {
+					synchronized(this) {
 					wait();
-				}
-			}catch(Exception e) {}
+					}
+				}catch(Exception e) {}
+			}
+		
 		}
+		
 		
 	}
 	

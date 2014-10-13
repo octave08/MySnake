@@ -42,7 +42,6 @@ public class ActivityPlay extends Activity {
 	private ThreadTime m_thread;
 	private Handler m_handler;
 		
-	int m_count = 0;
 	private int m_m10	= 0;	private ImageView m_imgM10;
 	private int m_m01	= 0;	private ImageView m_imgM01;
 	private int m_s10	= 0;	private ImageView m_imgS10;
@@ -96,42 +95,20 @@ public class ActivityPlay extends Activity {
 				// TODO Auto-generated method stub
 				super.handleMessage(msg);
 				
-				m_count ++;
-				if(m_count==10) {
-					m_ms01++;
-					m_count=0;
-				}
-				if(m_ms01==10) {
-					m_ms10++;
-					m_ms01=0;
-				}
-				if(m_ms10==10) {
-					m_s01++;
-					m_ms10=0;
-				}
-				if(m_s01==10) {
-					m_s10++;
-					m_s01=0;
-				}
-				if(m_s10==6) {
-					m_m01++;
-					m_s10=0;
-				}
-				if(m_m01==10) {
-					m_m10++;
-					m_m01=0;
-				}
-				if(m_m10==10) {
-					m_m10=0;
-					m_m01=0;
-				}
+				m_ms01 ++;
+				
+				if(m_ms01 ==10) 	{m_ms10++;	m_ms01=0;}
+				if(m_ms10 ==10) 	{m_s01++;	m_ms10=0;}
+				if(m_s01  ==10) 	{m_s10++;	m_s01=0;}
+				if(m_s10  ==6) 		{m_m01++;	m_s10=0;}
+				if(m_m01  ==10) 	{m_m10++;	m_m01=0;}
+				if(m_m10  ==10) 	{m_m10=0;	m_m01=0;}
 				setImageResouce();
 			}
-		}; 
+		};  
 		m_thread = new ThreadTime(m_handler);
-		m_thread.start(); 
-		
-			
+		m_thread.start();
+				
 	}
 	
 	//call by ViewBox
