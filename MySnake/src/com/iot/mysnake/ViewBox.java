@@ -64,6 +64,10 @@ public class ViewBox extends View {
 	private final static int RIGHT		= 3;
 	private final static int LEFT		= 4;
 	
+	private int m_status = RUNNING;
+	private final static int READY		= 0;
+	private final static int RUNNING 	= 1;
+	private final static int PAUSE		= 2;
 	
 	int m_gameScore 	= 0;
 	int m_appleScore 	= 0;
@@ -346,10 +350,12 @@ public class ViewBox extends View {
 	}
 	
 	private void update() {
-		this.clearTile();
-		setWallOnMap();
-		setSnakeOnMap();
-		setAppleOnMap();
+		if(m_status == RUNNING) {
+			this.clearTile();
+			setWallOnMap();
+			setSnakeOnMap();
+			setAppleOnMap();
+		}
 		
 		m_activity.setTextApple(m_appleScore);
 		m_activity.setTextScore(m_gameScore);
@@ -386,6 +392,13 @@ public class ViewBox extends View {
 	
 	public void setActivity(ActivityPlay activity) {
 		m_activity = activity;
+	}
+	
+	public void onPause(Boolean status) {
+		if(status)
+			m_status = RUNNING;
+		else
+			m_status = PAUSE;
 	}
 	
 	
