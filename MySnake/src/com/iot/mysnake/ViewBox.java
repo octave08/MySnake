@@ -67,7 +67,7 @@ public class ViewBox extends View {
 	private int m_status = RUNNING;
 	private final static int READY		= 0;
 	private final static int RUNNING 	= 1;
-	private final static int PAUSE		= 2;
+	private final static int PAUSE		=-1;
 	
 	int m_gameScore 	= 0;
 	int m_appleScore 	= 0;
@@ -365,6 +365,7 @@ public class ViewBox extends View {
 	
 	
 	protected void startGame(int gameMode) {
+		m_activity.setPlayStatus(RUNNING);
 		selectGame(gameMode);
 		readyGame(m_gameMode);
 		update();
@@ -394,11 +395,8 @@ public class ViewBox extends View {
 		m_activity = activity;
 	}
 	
-	public void onPause(Boolean status) {
-		if(status)
-			m_status = RUNNING;
-		else
-			m_status = PAUSE;
+	public void onPause(int status) {
+			m_status = status;
 	}
 	
 	
