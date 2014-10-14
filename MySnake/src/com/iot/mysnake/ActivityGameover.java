@@ -25,6 +25,8 @@ public class ActivityGameover extends Activity {
 	
 	private int[] m_imgNum = new int[10];
 	
+	private RankingData m_rankingData = null;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class ActivityGameover extends Activity {
 		setContentView(R.layout.layout_gameover);
 		
 		getPlayData();
+		
+		m_rankingData.setScore(Long.parseLong(m_resultScore));
+		m_rankingData.setApple(Long.parseLong(m_resultApple));
 		
 		m_textResultScore = (TextView)findViewById(R.id.textResultGameScore);
 		m_textResultApple = (TextView)findViewById(R.id.textResultAppleScore);
