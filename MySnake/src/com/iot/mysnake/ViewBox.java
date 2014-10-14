@@ -68,6 +68,7 @@ public class ViewBox extends View {
 	private final static int READY		= 0;
 	private final static int RUNNING 	= 1;
 	private final static int PAUSE		=-1;
+	private final static int STOP		= 2;
 	
 	int m_gameScore 	= 0;
 	int m_appleScore 	= 0;
@@ -261,12 +262,15 @@ public class ViewBox extends View {
 		
 		//collision detect
 		//detect collision of BOX_YELLOW
-		if(m_tileMap[newHead.getM_y()][newHead.getM_x()] == BOX_YELLOW)
+		if(m_tileMap[newHead.getM_y()][newHead.getM_x()] == BOX_YELLOW) {
+			m_status = STOP;
 			this.m_activity.goGameover();
+		}
 		//detect collision of snakeTail
 		for(Character c : m_snakeTrail) {
 			if(newHead.getM_x() == c.getM_x() &&
 					newHead.getM_y() == c.getM_y()) {
+				m_status = STOP;
 				this.m_activity.goGameover();
 			}
 		}
@@ -461,7 +465,9 @@ public class ViewBox extends View {
 		
 		public void sleep(long delayMills) {
 			this.removeMessages(0);
-			sendMessageDelayed(obtainMessage(0), delayMills);
+			
+			if(m_status != STOP)
+				sendMessageDelayed(obtainMessage(0), delayMills);
 		}
 		
 	}
