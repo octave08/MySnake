@@ -207,7 +207,7 @@ public class ActivityIntro extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(ActivityIntro.this, ActivityGameover.class);
+				Intent intent = new Intent(ActivityIntro.this, ActivityRank.class);
 				//intent.putExtra("gameScore", test);
 				//intent.putExtra("appleScore", test);
 				//intent.putExtra("time", test);

@@ -36,6 +36,12 @@
             android:screenOrientation="landscape" > 
         </activity>
         
+        <activity
+            android:name=".ActivityRank"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" > 
+		</activity>
+        
     </application>
 
 </manifest>

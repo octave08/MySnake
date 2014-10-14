@@ -15,13 +15,13 @@ public class RankingData {
 	
 	
 	public long getRanking() 			{return ranking;}
-	public void setRanking(int ranking) {this.ranking = ranking;}
+	public void setRanking(long ranking) {this.ranking = ranking;}
 	public long getApple() 				{return apple;}
-	public void setApple(int apple) 	{this.apple = apple;}
+	public void setApple(long apple) 	{this.apple = apple;}
 	public long getScore() 				{return score;}
-	public void setScore(int score) 	{this.score = score;}
+	public void setScore(long score) 	{this.score = score;}
 	public long getTime() 				{return time;}
-	public void setTime(int time) 		{this.time = time;}
+	public void setTime(long time) 		{this.time = time;}
 	public String getName() 			{return name;}
 	public void setName(String name) 	{this.name = name;}
 	
