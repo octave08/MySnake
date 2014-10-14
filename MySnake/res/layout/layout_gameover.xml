@@ -1,5 +1,124 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_gameover" >
 
-</GridLayout>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageResultScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/playgamescore" />
+
+    <ImageView
+        android:id="@+id/imageResultMs01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageResultM01"
+        android:layout_toRightOf="@+id/imageResultMs10"
+        android:src="@drawable/num1" />
+
+    <ImageView
+        android:id="@+id/imageResultS01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageResultS10"
+        android:layout_toRightOf="@+id/imageResultS10"
+        android:src="@drawable/num0" />
+
+    <ImageView
+        android:id="@+id/ImageResultCol1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageResultM01"
+        android:layout_toRightOf="@+id/imageResultM01"
+        android:src="@drawable/numcol" />
+
+    <ImageView
+        android:id="@+id/imageResultS10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ImageResultCol1"
+        android:layout_toRightOf="@+id/ImageResultCol1"
+        android:src="@drawable/num0" />
+
+    <ImageView
+        android:id="@+id/imageResultMs10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageResultMs01"
+        android:layout_toRightOf="@+id/imageResultCol2"
+        android:src="@drawable/num0" />
+
+    <ImageView
+        android:id="@+id/imageResultM10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageResultM01"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/num0" />
+
+    <ImageView
+        android:id="@+id/imageResultM01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textResultTime"
+        android:layout_toRightOf="@+id/imageResultM10"
+        android:src="@drawable/num0" />
+
+    <ImageView
+        android:id="@+id/imageResultApple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageResultScore"
+        android:layout_marginRight="22dp"
+        android:layout_marginTop="48dp"
+        android:layout_toLeftOf="@+id/imageResultScore"
+        android:src="@drawable/playapplescore" />
+
+    <TextView
+        android:id="@+id/textResultGameScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageResultScore"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="game score" />
+
+    <TextView
+        android:id="@+id/textResultTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageResultApple"
+        android:layout_below="@+id/imageResultApple"
+        android:layout_marginTop="20dp"
+        android:text="result time" />
+
+    <TextView
+        android:id="@+id/textResultAppleScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageResultS10"
+        android:layout_alignTop="@+id/imageResultApple"
+        android:text="apple score" />
+
+    <ImageView
+        android:id="@+id/imageResultCol2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageResultMs10"
+        android:layout_toRightOf="@+id/imageResultS01"
+        android:src="@drawable/numcol" />
+
+</RelativeLayout>

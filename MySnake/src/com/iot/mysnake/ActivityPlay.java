@@ -116,11 +116,16 @@ public class ActivityPlay extends Activity {
 		m_status = GAMEOVER;
 		m_thread.stopThread();
 		
-		Intent intent1 = new Intent(ActivityPlay.this, ActivityGameover.class);
-		intent1.putExtra("gameScore", 3);
-		//intent.putExtra("appleScore", test);
-		//intent.putExtra("time", test);
-		startActivity(intent1);
+		Intent intent = new Intent(ActivityPlay.this, ActivityGameover.class);
+		intent.putExtra("gameScore", m_textViewScore.getText().toString());
+		intent.putExtra("appleScore", m_textViewApple.getText().toString());
+		intent.putExtra("m10", m_m10);
+		intent.putExtra("m01", m_m01);
+		intent.putExtra("s10", m_s10);
+		intent.putExtra("s01", m_s01);
+		intent.putExtra("ms10", m_ms01);
+		intent.putExtra("ms01", m_ms10);
+		startActivity(intent);
 			
 		finish();	
 	}

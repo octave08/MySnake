@@ -81,7 +81,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/btnstart_infinity" >"
+            android:background="@drawable/btnstart_infinity" >
 
             <ImageButton
                 android:id="@+id/btnInfinity"
@@ -101,7 +101,7 @@
         android:id="@+id/linearMode"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible" >"
+        android:visibility="invisible" >
         
         <ImageButton
             android:id="@+id/btnSetStage"
