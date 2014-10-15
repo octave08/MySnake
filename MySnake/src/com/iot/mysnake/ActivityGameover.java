@@ -2,6 +2,10 @@ package com.iot.mysnake;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,6 +48,7 @@ public class ActivityGameover extends Activity {
 	private ImageView m_imgBack 	= null;
 	private ImageView m_imgRetry 	= null;
 	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +63,6 @@ public class ActivityGameover extends Activity {
 		m_textResultApple = (TextView)findViewById(R.id.textResultAppleScore);		
 		m_textResultScore.setText(m_resultScore);
 		m_textResultApple.setText(m_resultApple);
-	
 	
 		combineTime();
 		setImgNum();
@@ -144,7 +148,8 @@ public class ActivityGameover extends Activity {
 						+ m_resultS10*1000 + m_resultS01*100
 						+ m_resultMs10*10 + m_resultMs01;
 	}
-
+	
+	
 	
 	
 }

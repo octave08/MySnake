@@ -13,7 +13,7 @@ import android.provider.BaseColumns;
 
 public class RankingDB extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME = "mysnakerank.db";
-	private static final int DATABASE_VERSION = 5;
+	private static final int DATABASE_VERSION = 6;
 	
 	private static final String TABLE_NAME 	= "table_mysnake";
 	private static final String SCORE		= "score";

@@ -3,24 +3,6 @@
     android:layout_height="fill_parent"
     android:background="@drawable/bg_gameover" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="28dp"
-        android:text="TextView" />
-
-    <ImageView
-        android:id="@+id/imageResultScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/playgamescore" />
-
     <ImageView
         android:id="@+id/imageResultMs01"
         android:layout_width="wrap_content"
@@ -61,57 +43,15 @@
         android:layout_toRightOf="@+id/imageResultCol2"
         android:src="@drawable/num0" />
 
-    <ImageView
-        android:id="@+id/imageResultM10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageResultM01"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/num0" />
-
-    <ImageView
-        android:id="@+id/imageResultM01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textResultTime"
-        android:layout_toRightOf="@+id/imageResultM10"
-        android:src="@drawable/num0" />
-
-    <ImageView
-        android:id="@+id/imageResultApple"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageResultScore"
-        android:layout_marginRight="22dp"
-        android:layout_marginTop="48dp"
-        android:layout_toLeftOf="@+id/imageResultScore"
-        android:src="@drawable/playapplescore" />
-
     <TextView
         android:id="@+id/textResultGameScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:layout_below="@+id/imageResultScore"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
         android:text="game score" />
-
-    <TextView
-        android:id="@+id/textResultTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageResultApple"
-        android:layout_below="@+id/imageResultApple"
-        android:layout_marginTop="20dp"
-        android:text="result time" />
-
-    <TextView
-        android:id="@+id/textResultAppleScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageResultS10"
-        android:layout_alignTop="@+id/imageResultApple"
-        android:text="apple score" />
 
     <ImageView
         android:id="@+id/imageResultCol2"
@@ -120,22 +60,6 @@
         android:layout_alignTop="@+id/imageResultMs10"
         android:layout_toRightOf="@+id/imageResultS01"
         android:src="@drawable/numcol" />
-
-    <ImageView
-        android:id="@+id/imageThL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textResultAppleScore"
-        android:layout_toRightOf="@+id/textView1"
-        android:src="@drawable/img_thl" />
-
-    <ImageView
-        android:id="@+id/imgRanking"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textResultGameScore"
-        android:layout_alignRight="@+id/textView1"
-        android:src="@drawable/num0" />
 
     <ImageView
         android:id="@+id/imgBack2"
@@ -147,12 +71,91 @@
         android:src="@drawable/img_back2" />
 
     <ImageView
+        android:id="@+id/imageResultScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_toLeftOf="@+id/textResultAppleScore"
+        android:src="@drawable/playgamescore" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/imgRetry"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageResultM01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageResultM10"
+        android:layout_toRightOf="@+id/imageResultM10"
+        android:src="@drawable/num0" />
+
+    <TextView
+        android:id="@+id/textResultAppleScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/imageResultApple"
+        android:layout_alignLeft="@+id/imageResultS10"
+        android:layout_alignTop="@+id/imageResultApple"
+        android:text="apple score" />
+
+    <ImageView
+        android:id="@+id/imageThL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textResultGameScore"
+        android:layout_toRightOf="@+id/imgRanking"
+        android:src="@drawable/img_thl" />
+
+    <ImageView
+        android:id="@+id/imgRanking"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageThL"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_alignTop="@+id/imageThL"
+        android:src="@drawable/num0" />
+
+    <ImageView
         android:id="@+id/imgRetry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imgRanking"
+        android:layout_alignTop="@+id/imgBack2"
         android:layout_marginLeft="26dp"
         android:src="@drawable/img_retry" />
+
+    <ImageView
+        android:id="@+id/imageResultApple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/imageThL"
+        android:layout_below="@+id/imageThL"
+        android:src="@drawable/playapplescore" />
+
+    <ImageView
+        android:id="@+id/imageRankTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageResultApple"
+        android:layout_below="@+id/imageResultApple"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/img_time" />
+
+    <ImageView
+        android:id="@+id/imageResultM10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageRankTime"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/num0" />
 
 </RelativeLayout>
