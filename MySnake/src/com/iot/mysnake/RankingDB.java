@@ -13,7 +13,7 @@ import android.provider.BaseColumns;
 
 public class RankingDB extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME = "mysnakerank.db";
-	private static final int DATABASE_VERSION = 4;
+	private static final int DATABASE_VERSION = 5;
 	
 	private static final String TABLE_NAME 	= "table_mysnake";
 	private static final String SCORE		= "score";
@@ -47,7 +47,7 @@ public class RankingDB extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 		onCreate(db);
 	}
-
+	
 	public void addRanking(RankingData playData) {
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -56,6 +56,8 @@ public class RankingDB extends SQLiteOpenHelper {
 		values.put(TIME, playData.getTime());
 		db.insertOrThrow(TABLE_NAME, null, values);
 	}
+	
+	
 	
 	public Cursor getRanking(Activity activity) {
 		SQLiteDatabase db = getReadableDatabase();
@@ -74,12 +76,15 @@ public class RankingDB extends SQLiteOpenHelper {
 			long apple	= cursor.getLong(2);
 			long time	= cursor.getLong(3);
 			
-			data.setRanking(ranking++);
-			data.setScore(score);
-			data.setApple(apple);
-			data.setTime(time);
 			
-			list.add(data);
+			if(ranking<11) {
+				data.setRanking(ranking);
+				data.setScore(score);
+				data.setApple(apple);
+				data.setTime(time);
+				list.add(data);
+			}
+			ranking++;
 		}
 		
 		return list;

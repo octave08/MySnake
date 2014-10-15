@@ -45,13 +45,10 @@ public class RankingManager {
 		data.setScore(score);
 		data.setApple(apple);
 		data.setTime(time);
+		
+		m_rankingDB.addRanking(data);
 
-		if(this.getRanking(score)<=RankingDB.MAX_RANK) {
-			m_rankingDB.addRanking(data);
-			return true;
-		}
-
-		return false;
+		return true;
 	}
 	
 	

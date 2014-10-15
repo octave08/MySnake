@@ -76,7 +76,8 @@ public class ActivityGameover extends Activity {
 		m_imgRanking = (ImageView)findViewById(R.id.imgRanking);
 		m_imgRanking.setImageResource(m_imgNum[(int)m_ranking]);
 
-		m_rankingManager.saveRanking(m_score, m_apple, m_time);
+		if(m_ranking<10)
+			m_rankingManager.saveRanking(m_score, m_apple, m_time);
 		
 		//set button retry, back
 		m_imgBack = (ImageView)findViewById(R.id.imgBack2);
