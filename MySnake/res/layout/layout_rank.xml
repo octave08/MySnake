@@ -11,4 +11,14 @@
         android:layout_centerVertical="true" >
     </ListView>
 
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="18dp"
+        android:src="@drawable/img_back" />
+
 </RelativeLayout>

@@ -125,6 +125,7 @@ public class ActivityPlay extends Activity {
 		intent.putExtra("s01", m_s01);
 		intent.putExtra("ms10", m_ms01);
 		intent.putExtra("ms01", m_ms10);
+		intent.putExtra("gameMode", m_gameMode);
 		startActivity(intent);
 			
 		finish();	

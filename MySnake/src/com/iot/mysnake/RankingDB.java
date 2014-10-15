@@ -13,14 +13,14 @@ import android.provider.BaseColumns;
 
 public class RankingDB extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME = "mysnakerank.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 4;
 	
 	private static final String TABLE_NAME 	= "table_mysnake";
 	private static final String SCORE		= "score";
 	private static final String APPLE		= "apple";
 	private static final String TIME		= "time";
 	private static final String[] FROM		= { BaseColumns._ID, SCORE, APPLE, TIME};
-	public static final int MAX_RANK 		= 10;
+	public static final int MAX_RANK 		= 9;
 	private static final String ORDER_BY	= SCORE + " DESC";
 	
 

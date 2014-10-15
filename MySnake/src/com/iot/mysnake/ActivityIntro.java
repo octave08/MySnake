@@ -110,6 +110,9 @@ public class ActivityIntro extends Activity {
 				Intent intent = new Intent(ActivityIntro.this, ActivityPlay.class);
 				intent.putExtra("gamemode", m_gameLevel);
 				startActivity(intent);
+				m_linearIntro.setVisibility(View.VISIBLE);
+				m_linearStage.setVisibility(View.INVISIBLE);
+				
 			}
 			
 		});
@@ -136,7 +139,9 @@ public class ActivityIntro extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(ActivityIntro.this, ActivityPlay.class);
 				intent.putExtra("gamemode", m_gameMode);
-				startActivityForResult(intent, 1);
+				startActivity(intent);
+				m_linearIntro.setVisibility(View.VISIBLE);
+				m_linearInfinity.setVisibility(View.INVISIBLE);
 			}
 			
 		});
@@ -212,7 +217,6 @@ public class ActivityIntro extends Activity {
 				//intent.putExtra("appleScore", test);
 				//intent.putExtra("time", test);
 				startActivity(intent);
-				finish(); 
 				
 			}
 			

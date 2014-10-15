@@ -121,4 +121,38 @@
         android:layout_toRightOf="@+id/imageResultS01"
         android:src="@drawable/numcol" />
 
+    <ImageView
+        android:id="@+id/imageThL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textResultAppleScore"
+        android:layout_toRightOf="@+id/textView1"
+        android:src="@drawable/img_thl" />
+
+    <ImageView
+        android:id="@+id/imgRanking"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textResultGameScore"
+        android:layout_alignRight="@+id/textView1"
+        android:src="@drawable/num0" />
+
+    <ImageView
+        android:id="@+id/imgBack2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textResultGameScore"
+        android:layout_marginLeft="52dp"
+        android:layout_toRightOf="@+id/imageResultMs01"
+        android:src="@drawable/img_back2" />
+
+    <ImageView
+        android:id="@+id/imgRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imgRanking"
+        android:layout_marginLeft="26dp"
+        android:src="@drawable/img_retry" />
+
 </RelativeLayout>

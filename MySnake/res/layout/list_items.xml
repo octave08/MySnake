@@ -1,103 +1,85 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="100dp" >
+    android:layout_height="70dp"
+    android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/imgRanking"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:src="@drawable/num0" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+        
+    	<ImageView
+        	android:id="@+id/imgRanking"
+        	android:layout_width="30dp"
+        	android:layout_height="wrap_content"
+        	android:paddingLeft="10dp"
+        	android:src="@drawable/num0" />
 
-    <ImageView
-        android:id="@+id/imageTh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/img_th" />
+    	<ImageView
+        	android:id="@+id/imageTh"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:src="@drawable/img_th" />
 
-    <ImageView
-        android:id="@+id/imageScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/playgamescore" />
+    	<ImageView
+        	android:id="@+id/imageScore"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:src="@drawable/playgamescore" />
 
-    <TextView
-        android:id="@+id/textRankScore"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:gravity="center"
-        android:text="TextView" />
+    	<TextView
+        	android:id="@+id/textRankScore"
+        	android:layout_width="100dp"
+        	android:layout_height="32dp"
+        	android:gravity="right|center_vertical"
+        	android:paddingRight="20dp"
+        	android:textSize="20sp"
+        	android:typeface="monospace"
+        	android:text="TextView" />
+        
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageApple"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/playapplescore" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <ImageView
-        android:id="@+id/imgAppleCnt10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/num0" />
+        <ImageView
+            android:id="@+id/imageRankBg"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/boxbg" />
 
-    <ImageView
-        android:id="@+id/imgAppleCnt01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/num0" />
+        <ImageView
+            android:id="@+id/imageApple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/playapplescore" />
 
-    <ImageView
-        android:id="@+id/imageTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/img_time" />
+        <TextView
+            android:id="@+id/textRankApple"
+            android:layout_width="50dp"
+            android:layout_height="32dp"
+            android:gravity="right|center_vertical"
+            android:paddingRight="10dp"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:typeface="monospace" />
+        
+		<ImageView
+        	android:id="@+id/imageTime"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:src="@drawable/img_time" />
 
-    <ImageView
-        android:id="@+id/imgM10"
-        android:layout_width="15dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/num0" />
+		<TextView
+		    android:id="@+id/textRankTime"
+		    android:layout_width="wrap_content"
+		    android:layout_height="32dp"
+		    android:gravity="center_vertical"
+		    android:text="TextView"
+		    android:textSize="20sp"
+		    android:typeface="monospace" />
 
-    <ImageView
-        android:id="@+id/imgM01"
-        android:layout_width="15dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/num0" />
-
-    <ImageView
-        android:id="@+id/imgCol1"
-        android:layout_width="5dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/numcol" />
-
-    <ImageView
-        android:id="@+id/imgS10"
-        android:layout_width="15dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/num0" />
-
-    <ImageView
-        android:id="@+id/imgS01"
-        android:layout_width="15dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/num0" />
-
-    <ImageView
-        android:id="@+id/ImgCol2"
-        android:layout_width="5dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/numcol" />
-
-    <ImageView
-        android:id="@+id/ImgMs10"
-        android:layout_width="15dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/num0" />
-
-    <ImageView
-        android:id="@+id/ImgMs01"
-        android:layout_width="15dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/num0" />
+    </LinearLayout>
 
 </LinearLayout>

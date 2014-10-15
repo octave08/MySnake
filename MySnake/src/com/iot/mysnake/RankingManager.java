@@ -19,7 +19,7 @@ public class RankingManager {
 	}
 
 	
-	long getRanking(long score) {
+	public long getRanking(long score) {
 		long ranking = 0;
 		
 		Vector<RankingData> list = this.getRankingList();
@@ -27,7 +27,7 @@ public class RankingManager {
 		int index = 0;
 		for(RankingData data:list)
 		{
-			if(data.getScore()<=score) 		
+			if(data.getScore()<score) 		
 			{
 				ranking = index+1;
 				break;
@@ -40,18 +40,18 @@ public class RankingManager {
 	}
 	
 
-	boolean saveRanking(long score, long apple, long time) {
+	public boolean saveRanking(long score, long apple, long time) {
 		RankingData data = new RankingData();
 		data.setScore(score);
 		data.setApple(apple);
 		data.setTime(time);
 
-		if(this.getRanking(score)>RankingDB.MAX_RANK)
-			return false;
-		
-		m_rankingDB.addRanking(data); 
-		
-		return true;
+		if(this.getRanking(score)<=RankingDB.MAX_RANK) {
+			m_rankingDB.addRanking(data);
+			return true;
+		}
+
+		return false;
 	}
 	
 	
