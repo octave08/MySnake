@@ -76,7 +76,7 @@
             android:id="@+id/btnBackFromInfinity"
             android:layout_width="186dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/btnstart_vivid" />
+            android:src="@drawable/btnstart_vivid2" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -88,7 +88,8 @@
                 android:layout_width="230dp"
                 android:layout_height="150dp"
                	android:layout_marginLeft="60dp"
-               	android:layout_marginTop="20dp"
+               	android:layout_marginTop="60dp"
+               	android:background="#00ff0000"
                	android:src="@drawable/btninfinity"  />
 
         </RelativeLayout>

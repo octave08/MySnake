@@ -1,9 +1,13 @@
 package com.iot.mysnake;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -41,6 +45,7 @@ public class ActivityIntro extends Activity {
 	private final static int LEVEL4		= 4;
 	private final static int LEVEL5		= 5;
 	
+	ProgressDialog dialog = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -222,9 +227,26 @@ public class ActivityIntro extends Activity {
 			
 		}); 
 	}
-	
 
-	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		switch(keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert)
+				.setTitle("Warnning")
+				.setMessage("Exit App?")
+				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						finish();
+					}
+				})
+				.setNegativeButton("Cancel", null).show();		
+		}			
+		return true;
+	}
 	
 	
 }

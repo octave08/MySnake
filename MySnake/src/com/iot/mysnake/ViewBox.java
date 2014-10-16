@@ -202,7 +202,7 @@ public class ViewBox extends View {
 	}
 	
 	//스테이지 설정
-	void initStage(int gameLevel) {
+	protected void setStageOnMap(int gameLevel) {
 		switch(gameLevel) {
 		case LEVEL1:
 			setLevel1OnMap();
@@ -221,6 +221,10 @@ public class ViewBox extends View {
 	}
 	
 	protected void setLevel1OnMap() {
+		for(int x=0;x<SIZE_MAP_X/2;x++) {
+			setTile(BOX_YELLOW, x, 4);
+			setTile(BOX_YELLOW, x, 8);
+		}
 		
 	}
 	
@@ -330,19 +334,21 @@ public class ViewBox extends View {
 		while(foundMap == false) {
 			
 			Random rnd = new Random();
-			int newX = 2 + rnd.nextInt(SIZE_MAP_X -3);
-			int newY = 2 + rnd.nextInt(SIZE_MAP_Y -3);
+			int newX = 1 + rnd.nextInt(SIZE_MAP_X -3);
+			int newY = 1 + rnd.nextInt(SIZE_MAP_Y -3);
 			newCharacter = new Character(this, newX, newY, Character.DIRECTION_NOT);
 			
 			boolean collision = false;
 			//생설될 사과와 Snake의 충돌검사
 			for(int i=0;i<m_snakeTrail.size();++i) {
-				if(m_snakeTrail.get(i).equals(newCharacter)) {
+				if(m_snakeTrail.get(i).getM_x() == newX &&
+						m_snakeTrail.get(i).getM_y() == newY) {
 					collision = true;
 				}
 			}
 			//생성될 사과와 사과의 충돌검사
-			if(m_appleVector.size() != 0 && m_appleVector.get(0).equals(newCharacter)) {
+			if(m_appleVector.size() != 0 && m_appleVector.get(0).getM_x() == newX 
+					&&m_appleVector.get(0).getM_y() == newY) {
 				collision = true;
 			}
 			
@@ -357,6 +363,7 @@ public class ViewBox extends View {
 		if(m_status == RUNNING) {
 			this.clearTile();
 			setWallOnMap();
+			setStageOnMap(m_gameLevel);
 			setSnakeOnMap();
 			setAppleOnMap();
 		}
@@ -369,9 +376,9 @@ public class ViewBox extends View {
 	
 	
 	protected void startGame(int gameMode) {
-		m_activity.setPlayStatus(RUNNING);
 		selectGame(gameMode);
 		readyGame(m_gameMode);
+		m_activity.setPlayStatus(RUNNING);
 		update();
 	}
 	
@@ -389,7 +396,7 @@ public class ViewBox extends View {
 			initApple();
 		}
 		else {
-			initStage(m_gameLevel);
+			setStageOnMap(m_gameLevel);
 			initApple();
 		}
 	}
@@ -397,6 +404,10 @@ public class ViewBox extends View {
 	
 	public void setActivity(ActivityPlay activity) {
 		m_activity = activity;
+	}
+	
+	public void setStatus(int status) {
+		m_status = status;
 	}
 	
 	public void onPause(int status) {
@@ -466,7 +477,7 @@ public class ViewBox extends View {
 		public void sleep(long delayMills) {
 			this.removeMessages(0);
 			
-			if(m_status != STOP)
+			if(m_status != STOP || m_status != READY)
 				sendMessageDelayed(obtainMessage(0), delayMills);
 		}
 		

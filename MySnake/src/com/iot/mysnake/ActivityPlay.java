@@ -1,10 +1,13 @@
 package com.iot.mysnake;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -161,6 +164,18 @@ public class ActivityPlay extends Activity {
 		m_imgS01.setImageResource(m_imgNum[m_s01]);
 		m_imgMs10.setImageResource(m_imgNum[m_ms10]);
 		m_imgMs01.setImageResource(m_imgNum[m_ms01]);
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		switch(keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			m_thread.stopThread();
+			m_viewBox.setStatus(READY);
+			finish();
+		}
+		return true;
 	}
 
 }

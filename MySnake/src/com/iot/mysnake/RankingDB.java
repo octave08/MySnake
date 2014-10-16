@@ -55,8 +55,8 @@ public class RankingDB extends SQLiteOpenHelper {
 		values.put(APPLE, playData.getApple());
 		values.put(TIME, playData.getTime());
 		db.insertOrThrow(TABLE_NAME, null, values);
+
 	}
-	
 	
 	
 	public Cursor getRanking(Activity activity) {
@@ -77,13 +77,15 @@ public class RankingDB extends SQLiteOpenHelper {
 			long time	= cursor.getLong(3);
 			
 			
-			if(ranking<11) {
+			if(ranking<10) {
 				data.setRanking(ranking);
 				data.setScore(score);
 				data.setApple(apple);
 				data.setTime(time);
 				list.add(data);
 			}
+			else
+				break;
 			ranking++;
 		}
 		
