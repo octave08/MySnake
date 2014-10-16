@@ -51,8 +51,9 @@
 
             <ImageButton
                 android:id="@+id/btnStage1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="#00ff0000"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
@@ -76,7 +77,7 @@
             android:id="@+id/btnBackFromInfinity"
             android:layout_width="186dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/btnstart_vivid2" />
+            android:src="@drawable/btnstart_vivid" />
 
         <RelativeLayout
             android:layout_width="match_parent"
